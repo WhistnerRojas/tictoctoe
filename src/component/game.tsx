@@ -33,7 +33,7 @@ function Game() {
 
     const {b1, b2, b3, b4, b5, b6, b7, b8, b9} = box
     //setting up winning combination
-    const winCombo:Array<Array<boolean | null>>= [
+    const winCombo:any= [
         [b1,b2,b3],
         [b4,b5,b6],
         [b7,b8,b9],
@@ -74,7 +74,7 @@ function Game() {
         }
         CheckWin()
 
-    },[])//this will check evertime click event occured to boxes
+    },[box])//this will check evertime click event occured to boxes
 
     const handleReset = ()=>{
         //reseting back to initial state.
