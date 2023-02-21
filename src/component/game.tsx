@@ -74,7 +74,7 @@ function Game() {
         }
         CheckWin()
 
-    },[box])//this will check evertime click event occured to boxes
+    },[])//this will check evertime click event occured to boxes
 
     const handleReset = ()=>{
         //reseting back to initial state.
