@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useMemo} from 'react'
 import Box from './Box'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -31,9 +31,11 @@ function Game() {
         e.target.value = player === false ? 'X' : 'O' //setting the value/filling the button with indicator as to who click it.
     }
 
-    const {b1, b2, b3, b4, b5, b6, b7, b8, b9} = box
+    const {b1, b2, b3, b4, b5, b6, b7, b8, b9} = useMemo(()=> box, [box])
+
+    useEffect(()=>{
     //setting up winning combination
-    const winCombo:any= [
+    const winCombo:Array<Array<boolean | null>>= [
         [b1,b2,b3],
         [b4,b5,b6],
         [b7,b8,b9],
@@ -43,8 +45,6 @@ function Game() {
         [b1,b5,b9],
         [b3,b5,b7]
     ]
-
-    useEffect(()=>{
 
         const disable = ()=>{
             document.querySelectorAll("input[type='button']").forEach(input =>{
@@ -74,7 +74,7 @@ function Game() {
         }
         CheckWin()
 
-    },[box, winCombo])//this will check evertime click event occured to boxes
+    },[box])//this will check evertime click event occured to boxes
 
     const handleReset = ()=>{
         //reseting back to initial state.
